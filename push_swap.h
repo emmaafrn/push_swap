@@ -27,6 +27,9 @@ void	rev_rotate_a(t_list **a);
 void	rev_rotate_b(t_list **b);
 void	rev_rotate_a_and_b(t_list **a, t_list **b);
 
+void	rotate_b(t_list	**a);
 void	rotate_a(t_list	**a);
+void	rotate_ab(t_list **a, t_list **b)
+
 
 #endif
