@@ -31,7 +31,8 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	a = argv_to_lst(argv, argc); 
-	// rotate_a(&a);
+	// rev_rotate_a(&a);
+	rotate_a(&a);
 	while (a != NULL)
 	{
 		printf("a = %d\n", a->content);
