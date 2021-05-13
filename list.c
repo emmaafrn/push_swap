@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efarin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bmoulin <bmoulin@42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 09:15:51 by efarin            #+#    #+#             */
-/*   Updated: 2021/05/13 09:16:11 by efarin           ###   ########lyon.fr   */
+/*   Updated: 2021/05/13 13:15:58 by bmoulin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ t_list	*ft_lstlast(t_list *lst)
 
 void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	t_list	*temp;
+	t_list		*tmp;
 
-	temp = NULL;
-	if (alst == NULL)
-		alst = &new;
+	if (*alst == NULL)
+		*alst = new;
 	else
 	{
-		temp = ft_lstlast(*alst);
-		temp->next = new;
+		tmp = ft_lstlast(*alst);
+		tmp->next = new;
+		tmp->next->next = NULL;
 	}
 }
 

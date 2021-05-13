@@ -12,43 +12,14 @@ t_list		*argv_to_lst(char **argv, int argc)
 	while (i < argc)
 	{
 		res = ft_atoi(argv[i]);
-		printf("res %d\n", res);
+		// printf("res %d\n", res);
 		new = ft_lstnew(res);
-		printf("new = %d\n", new->content);
 		ft_lstadd_back(&lst, new);
 		i++;
 	}
-	new = lst;
-	while (lst != NULL)
-	{
-		printf("content = %d\n", lst->content);
-		lst = lst->next;
-	}
-	lst = new;
+	// lst = lst->next;
 	return (lst);
 }
-
-void	swap_b(t_list *b)
-{
-	t_list	*first;
-	int		tmp;
-	int		len;
-
-	first = b;
-	len = ft_lstsize(b);
-	if (len < 2)
-		return ;
-	tmp = b->content;
-	b->content = b->next->content;
-	b->next->content = tmp;
-	while (b != NULL)
-	{
-		printf("b = %d\n", b->content);
-		b = b->next;
-	}
-	b = first;
-}
-
 
 int	main(int argc, char **argv)
 {
@@ -60,5 +31,10 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	a = argv_to_lst(argv, argc); 
-	swap_b(a);
+	// rotate_a(&a);
+	while (a != NULL)
+	{
+		printf("a = %d\n", a->content);
+		a = a->next;
+	}
 }

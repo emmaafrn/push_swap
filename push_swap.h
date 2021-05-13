@@ -12,11 +12,18 @@ typedef struct s_list
 }				t_list;
 
 
-t_list			*ft_lstnew(int content);
-void			ft_lstadd_back(t_list **alst, t_list *new);
-void			ft_lstclear(t_list **lst, void (*del)(void*));
-int				ft_lstsize(t_list *lst);
-int				ft_atoi(const char *nptr);
+t_list	*ft_lstnew(int content);
+void	ft_lstadd_back(t_list **alst, t_list *new);
+void	ft_lstclear(t_list **lst, void (*del)(void*));
+int		ft_lstsize(t_list *lst);
+int		ft_atoi(const char *nptr);
 
+void	swap_b(t_list *b);
+void	swap_a(t_list *a);
+void	swap_ab(t_list *a, t_list *b);
+
+void	rev_rotate_a(t_list **a);
+void	rev_rotate_b(t_list **b);
+void	rev_rotate_a_and_b(t_list **a, t_list **b);
 
 #endif
