@@ -47,44 +47,14 @@ void	ft_lstadd_back(t_list **alst, t_list *new)
 	}
 }
 
-// void	ft_lstadd_back(t_list **alst, t_list *new)
-// {
-// 	t_list	*ok;
-
-// 	if (*alst == NULL)
-// 	{
-// 		*alst = new;
-// 		return ;
-// 	}
-// 	ok = *alst;
-// 	while (ok->next != NULL)
-// 		ok = ok->next;
-// 	ok->next = new;
-// }
-
-// void	ft_lstclear(t_list **lst, void (*del)(void*))
-// {
-// 	t_list	*ok;
-
-// 	ok = (*lst);
-// 	while (ok != NULL)
-// 	{
-// 		ok = (*lst)->next;
-// 		del((*lst)->content);
-// 		free((*lst));
-// 		(*lst) = ok;
-// 	}
-// 	(*lst) = NULL;
-// }
-
-// t_list		*ft_lstlast(t_list *lst)
-// {
-// 	if (!lst)
-// 		return (lst);
-// 	while (lst->next)
-// 		lst = lst->next;
-// 	return (lst);
-// }
+void	ft_lstadd_front(t_list **alst, t_list *new)
+{
+	if (new == NULL)
+		return ;
+	new = ft_lstlast(new);
+	new->next = *alst;
+	*alst = new;
+}
 
 int	ft_lstsize(t_list *lst)
 {

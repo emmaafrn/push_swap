@@ -12,13 +12,38 @@ t_list		*argv_to_lst(char **argv, int argc)
 	while (i < argc)
 	{
 		res = ft_atoi(argv[i]);
-		// printf("res %d\n", res);
 		new = ft_lstnew(res);
 		ft_lstadd_back(&lst, new);
 		i++;
 	}
-	// lst = lst->next;
 	return (lst);
+}
+
+void	check_duplicates(t_list *a)
+{
+	t_list	*it;
+	t_list	*first;
+
+	first = a;
+	it = a->next;
+	if (ft_lstsize(a) == 1)
+		return ;
+	while (a)
+	{
+		while (it)
+		{
+			if (a->content == it->content)
+			{
+				printf("Error\n");
+				exit(0);
+			}
+			it = it->next;	
+		}
+		a = a->next;
+		if (a)
+			it = a->next;
+	}
+	a = first;
 }
 
 int	main(int argc, char **argv)
@@ -32,7 +57,8 @@ int	main(int argc, char **argv)
 	}
 	a = argv_to_lst(argv, argc); 
 	// rev_rotate_a(&a);
-	rotate_a(&a);
+	// rotate_a(&a);
+	check_duplicates(a);
 	while (a != NULL)
 	{
 		printf("a = %d\n", a->content);

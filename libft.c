@@ -20,7 +20,10 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	if (nptr[i] != '\0')
-		return (-1);
+	{
+		printf("Error\n");
+		exit(0);
+	}
 	result = result * s;
 	return ((int)result);
 }
