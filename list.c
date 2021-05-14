@@ -6,7 +6,7 @@
 /*   By: bmoulin <bmoulin@42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 09:15:51 by efarin            #+#    #+#             */
-/*   Updated: 2021/05/13 14:22:10 by bmoulin          ###   ########lyon.fr   */
+/*   Updated: 2021/05/14 11:14:41 by bmoulin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ void	ft_lstadd_front(t_list **alst, t_list *new)
 		return ;
 	new = ft_lstlast(new);
 	new->next = *alst;
+	new = new->next;
 	*alst = new;
 }
+
 
 int	ft_lstsize(t_list *lst)
 {

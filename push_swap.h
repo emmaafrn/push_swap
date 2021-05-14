@@ -35,7 +35,11 @@ void	rotate_ab(t_list **a, t_list **b);
 void	push_a(t_list **a, t_list **b);
 void	push_b(t_list **a, t_list **b);
 
-void	algo(t_list	**a, t_list	**b);
+void	algo(t_list	**a);
 void	print_lst(t_list	*lst);
+
+void	tree_number(t_list	**a);
+void	two_number(t_list	**a);
+void	tri_tree_number(t_list	**a);
 
 #endif

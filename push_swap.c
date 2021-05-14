@@ -56,14 +56,16 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (0);
 	}
+	b = 0;
 	a = argv_to_lst(argv, argc); 
 	// rev_rotate_a(&a);
 	// rotate_a(&a);
 	check_duplicates(a);
-	algo(&a, &b);
-	while (a != NULL)
-	{
-		printf("a = %d\n", a->content);
-		a = a->next;
-	}
+	algo(&a);
+	print_lst(a);
+	// while (a != NULL)
+	// {
+	// 	printf("a = %d\n", a->content);
+	// 	a = a->next;
+	// }
 }

@@ -1,66 +1,62 @@
 #include "../push_swap.h"
 
-void	two_number(t_list	**a)
+int		get_smaller(t_list **a)
 {
-	if ((*a)->content > (*a)->next->content)
+	t_list	*tmp;
+	int		smaller;
+
+	smaller = (*a)->content;
+	tmp = *a;
+
+	while (tmp->next)
 	{
-		rotate_a(a);
-		printf("ra\n");
+		if (tmp->content < smaller)
+			smaller = tmp->content;
+		tmp = tmp->next;
 	}
-	exit(0);
+	if (tmp->content < smaller)
+			smaller = tmp->content;
+	return (smaller);
 }
 
-void	tree_number(t_list	**a)
+void	four_five(t_list **a)
 {
-	int		a_bis;
-	int		b;
-	int		c;
+	t_list	*tmp;
+	t_list	*b;
+	int		smaller;
 
-	a_bis = (*a)->content;
-	b = (*a)->next->content;
-	c = (*a)->next->next->content;
-	if ((*a)->content > (*a)->next->content > (*a)->next->next->content)
-		exit(0);
-	if (a_bis > b && b < c && a_bis < c)
+	smaller = get_smaller(a);
+	tmp = *a;
+	while (ft_lstsize(*a) > 3)
 	{
-		swap_a(*a);
-		printf("sa\n");
-		print_lst(*a);
+		while ((*a)->content != smaller)
+		{
+			rotate_a(a);
+			printf("ra\n");
+		}
+		push_b(a, &b);
+		printf("pb\n");
+		smaller = get_smaller(a);
 	}
-	if (a_bis > b && b > c)
+	tri_tree_number(a);
+	// printf ("a : ");
+	// print_lst(*a);
+	// printf ("b : ");
+	// print_lst(b);
+	while (b)
 	{
-		swap_a(*a);
-		rev_rotate_a(a);
-		printf("sa\nrra\n");
-		print_lst(*a);
+		push_a(a, &b);
+		printf("pa\n");
 	}
-	if (a_bis > b && b < c && a_bis > c)
-	{
-		rotate_a(a);
-		printf("ra\n");
-		print_lst(*a);
-	}
-	if (a_bis < b && b > c && a_bis < c)
-	{
-		swap_a(*a);
-		rotate_a(a);
-		printf("sa\nra\n");
-		print_lst(*a);
-	}
-	if (a_bis < b && b > c && a_bis > c)
-	{
-		rev_rotate_a(a);
-		printf("rra\n");
-		print_lst(*a);
-	}
-	exit(0);
 }
 
-void	algo(t_list	**a, t_list	**b)
+void	algo(t_list	**a)
 {
 	if (ft_lstsize(*a) == 2)
 		two_number(a);
 	// printf("here\n");
 	if (ft_lstsize(*a) == 3)
 		tree_number(a);
+	if (ft_lstsize(*a) >= 4)
+		four_five(a);
 }
