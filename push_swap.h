@@ -35,4 +35,7 @@ void	rotate_ab(t_list **a, t_list **b);
 void	push_a(t_list **a, t_list **b);
 void	push_b(t_list **a, t_list **b);
 
+void	algo(t_list	**a, t_list	**b);
+void	print_lst(t_list	*lst);
+
 #endif

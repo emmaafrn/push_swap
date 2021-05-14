@@ -49,6 +49,7 @@ void	check_duplicates(t_list *a)
 int	main(int argc, char **argv)
 {
 	t_list	*a;
+	t_list	*b;
 
 	if (argc <= 1)
 	{
@@ -59,6 +60,7 @@ int	main(int argc, char **argv)
 	// rev_rotate_a(&a);
 	// rotate_a(&a);
 	check_duplicates(a);
+	algo(&a, &b);
 	while (a != NULL)
 	{
 		printf("a = %d\n", a->content);
