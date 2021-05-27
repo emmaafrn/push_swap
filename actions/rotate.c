@@ -2,7 +2,6 @@
 
 void	rotate_a(t_list	**a)
 {
-	t_list	*tmp;
 	t_list	*first;
 	t_list	*newfirst;
 	int		lst_len;

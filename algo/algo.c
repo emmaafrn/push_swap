@@ -38,11 +38,7 @@ void	four_five(t_list **a)
 		printf("pb\n");
 		smaller = get_smaller(a);
 	}
-	tri_tree_number(a);
-	// printf ("a : ");
-	// print_lst(*a);
-	// printf ("b : ");
-	// print_lst(b);
+	tri_three_number(a);
 	while (b)
 	{
 		push_a(a, &b);
@@ -50,13 +46,21 @@ void	four_five(t_list **a)
 	}
 }
 
-void	algo(t_list	**a)
+void	algo(t_list	**a, t_list **b, t_chunks *c_struct)
 {
-	if (ft_lstsize(*a) == 2)
+	int size;
+
+	size = ft_lstsize(*a);
+	if (size == 2)
 		two_number(a);
-	// printf("here\n");
-	if (ft_lstsize(*a) == 3)
-		tree_number(a);
-	if (ft_lstsize(*a) >= 4)
+	if (size == 3)
+		three_number(a);
+	if (size == 4 || size == 5)
 		four_five(a);
+	if (size > 5)
+	{
+		limits(a, c_struct);
+		push_values_under_limits(a, b, c_struct->chunk_limit, c_struct);
+		sort_a(a, b);
+	}
 }

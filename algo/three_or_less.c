@@ -10,7 +10,7 @@ void	two_number(t_list	**a)
 	exit(0);
 }
 
-void	tree_number(t_list	**a)
+void	three_number(t_list	**a)
 {
 	int		a_bis;
 	int		b;
@@ -56,7 +56,7 @@ void	tree_number(t_list	**a)
 	exit(0);
 }
 
-void	tri_tree_number(t_list	**a)
+void	tri_three_number(t_list	**a)
 {
 	int		a_bis;
 	int		b;

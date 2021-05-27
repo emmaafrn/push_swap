@@ -50,6 +50,7 @@ int	main(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*b;
+	t_chunks c_struct;
 
 	if (argc <= 1)
 	{
@@ -57,12 +58,13 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	b = 0;
+	c_struct.divisor = 0;
 	a = argv_to_lst(argv, argc); 
 	// rev_rotate_a(&a);
 	// rotate_a(&a);
 	check_duplicates(a);
-	algo(&a);
-	print_lst(a);
+	algo(&a, &b, &c_struct);
+	// print_lst(a);
 	// while (a != NULL)
 	// {
 	// 	printf("a = %d\n", a->content);
