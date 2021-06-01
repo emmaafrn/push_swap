@@ -27,3 +27,17 @@ int	ft_atoi(const char *nptr)
 	result = result * s;
 	return ((int)result);
 }
+
+void	ft_lstclear(t_list **lst)
+{
+	t_list	*ok;
+
+	ok = (*lst);
+	while (ok != NULL)
+	{
+		ok = (*lst)->next;
+		free((*lst));
+		(*lst) = ok;
+	}
+	(*lst) = NULL;
+}

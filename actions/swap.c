@@ -13,13 +13,6 @@ void	swap_b(t_list *b)
 	tmp = b->content;
 	b->content = b->next->content;
 	b->next->content = tmp;
-	// first = b;
-	// while (b != NULL)
-	// {
-	// 	printf("b = %d\n", b->content);
-	// 	b = b->next;
-	// }
-	// b = first;
 }
 
 void	swap_a(t_list *a)

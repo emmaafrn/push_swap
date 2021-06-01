@@ -57,30 +57,18 @@ void	ft_lstadd_front(t_list **alst, t_list *new)
 	*alst = new;
 }
 
-
 int	ft_lstsize(t_list *lst)
 {
-	int	i;
+	int		i;
+	t_list	*start;
 
 	i = 0;
+	start = lst;
 	while (lst != NULL)
 	{
 		lst = lst->next;
 		i++;
 	}
+	lst = start;
 	return (i);
-}
-
-void	ft_lstclear(t_list **lst)
-{
-	t_list	*ok;
-
-	ok = (*lst);
-	while (ok != NULL)
-	{
-		ok = (*lst)->next;
-		free((*lst));
-		(*lst) = ok;
-	}
-	(*lst) = NULL;
 }

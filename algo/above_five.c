@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-int		find_min_value(t_list *lst, int min)
+int	find_min_value(t_list *lst, int min)
 {
 	t_list	*start;
 
@@ -15,8 +15,26 @@ int		find_min_value(t_list *lst, int min)
 	return (min);
 }
 
+int	min_distance(t_list *lst, int min)
+{
+	int		i;
+	t_list	*start;
 
-int		*find_limits(t_list *temp, int len_a, int *limits, t_chunks *c_struct)
+	i = 0;
+	start = lst;
+	while (lst && lst->content != min)
+	{
+		lst = lst->next;
+		i++;
+	}
+	lst = start;
+	if (i <= (ft_lstsize(lst) / 2))
+		return (1);
+	else
+		return (0);
+}
+
+int	*find_limits(t_list *temp, int len_a, int *limits, t_chunks *c_struct)
 {
 	int	i;
 	int	j;
@@ -29,10 +47,7 @@ int		*find_limits(t_list *temp, int len_a, int *limits, t_chunks *c_struct)
 	while (++i <= len_a && j < c_struct->divisor)
 	{
 		if (j < c_struct->divisor && i % (len_a / c_struct->divisor) == 0)
-		{
-			limits[j] = temp->content;
-			j++;
-		}
+			limits[j++] = temp->content;
 		temp = temp->next;
 	}
 	if ((len_a % c_struct->divisor) > 0)
@@ -42,9 +57,6 @@ int		*find_limits(t_list *temp, int len_a, int *limits, t_chunks *c_struct)
 		limits[--j] = temp->content;
 		j++;
 	}
-	// j = -1;
-	// while (++j < c_struct->divisor)
-	// 	printf("tab[%d] = %d\n", j, *limits[j]);
 	ft_lstclear(&temp);
 	return (limits);
 }
@@ -61,23 +73,27 @@ void	limits(t_list **a, t_chunks *c_struct)
 	len_a = ft_lstsize(*a);
 	temp = lst_dup(*a);
 	pre_sort(&temp);
-	// printf("len_a = %d\n", len_a);
-	if (len_a >= 20)
+	if (len_a >= 500)
+		c_struct->divisor = 10;
+	else if (len_a >= 100)
 		c_struct->divisor = 5;
-	else if (len_a % 3 == 0 && len_a > 6)
+	else if (len_a >= 50)
+		c_struct->divisor = 4;
+	else if (len_a >= 20)
 		c_struct->divisor = 3;
 	else
 		c_struct->divisor = 2;
-	// printf("divisor = %d\n", c_struct->divisor);
-	c_struct->chunk_limit = find_limits(temp, len_a, c_struct->chunk_limit, c_struct);
+	c_struct->chunk_limit = find_limits(temp, len_a,
+			c_struct->chunk_limit, c_struct);
 	if (c_struct->chunk_limit == NULL)
 		return ;
 }
 
-void	push_values_under_limits(t_list **a, t_list **b, int *limits, t_chunks *c_struct)
+void	push_under_limits(t_list **a, t_list **b,
+		int *limits, t_chunks *c_struct)
 {
-	int	i;
-	t_list *dup;
+	int		i;
+	t_list	*dup;
 
 	i = 0;
 	while (i < c_struct->divisor)
@@ -99,58 +115,4 @@ void	push_values_under_limits(t_list **a, t_list **b, int *limits, t_chunks *c_s
 		}
 		i++;
 	}
-	// printf("----b----\n");
-	// print_lst(*b);
-	// printf("----a----\n");
-	// print_lst(*a);
-}
-
-void	sort_a(t_list **a, t_list **b)
-{
-	t_list	*dup;
-	int		min;
-
-	min = (*a)->content;
-	while (ft_lstsize(*b) > 0)
-	{
-		while ((*a)->content < (*b)->content)
-		{
-			rotate_a(a);
-			printf("ra\n");
-		}
-		if ((*b)->content < min)
-		{
-			while ((*a)->content != min)
-			{
-				rotate_a(a);
-				printf("ra\n");
-			}
-			push_a(a, b);
-			printf("pa\n");
-		}
-		else if ((*b)->content < (*a)->content)
-		{
-			while (ft_lstlast(*a)->content > (*b)->content)
-			{
-				rev_rotate_a(a);
-				printf("rra\n");
-			}
-			push_a(a, b);
-			printf("pa\n");
-			rev_rotate_a(a);
-			printf("rra\n");
-		}
-		dup = lst_dup(*a);
-		min = find_min_value(dup, min);
-		ft_lstclear(&dup);
-	}
-	while (ft_lstlast(*a)->content < (*a)->content)
-	{
-		rev_rotate_a(a);
-		printf("rra\n");
-	}
-	// printf("----b----\n");
-	// print_lst(*b);
-	// printf("----a----\n");
-	// print_lst(*a);
 }

@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-void		rev_rotate_a(t_list **a)
+void	rev_rotate_a(t_list **a)
 {
 	t_list	*tmp;
 	t_list	*before;
@@ -20,12 +20,12 @@ void		rev_rotate_a(t_list **a)
 	*a = tmp;
 }
 
-void		rev_rotate_b(t_list **b)
+void	rev_rotate_b(t_list **b)
 {
 	rev_rotate_a(b);
 }
 
-void		rev_rotate_a_and_b(t_list **a, t_list **b)
+void	rev_rotate_a_and_b(t_list **a, t_list **b)
 {
 	rev_rotate_a(a);
 	rev_rotate_b(b);

@@ -1,10 +1,10 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <limits.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -44,15 +44,17 @@ void	rotate_ab(t_list **a, t_list **b);
 void	push_a(t_list **a, t_list **b);
 void	push_b(t_list **a, t_list **b);
 
-void	algo(t_list	**a, t_list **b, t_chunks *chunks_struct);
+void	wich_algo(t_list	**a, t_list **b, t_chunks *chunks_struct);
 void	print_lst(t_list	*lst);
 
-void	three_number(t_list	**a);
-void	two_number(t_list	**a);
-void	tri_three_number(t_list	**a);
+void	three_numbers(t_list	**a, int size);
+void	two_numbers(t_list	**a);
 
+int		find_min_value(t_list *lst, int min);
 void	limits(t_list **a, t_chunks *c_struct);
-void	push_values_under_limits(t_list **a, t_list **b, int *limits, t_chunks *c_struct);
+void	push_under_limits(t_list **a, t_list **b,
+			int *limits, t_chunks *c_struct);
 void	sort_a(t_list **a, t_list **b);
+int		min_distance(t_list *lst, int min);
 
 #endif

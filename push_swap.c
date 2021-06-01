@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_list		*argv_to_lst(char **argv, int argc)
+t_list	*argv_to_lst(char **argv, int argc)
 {
 	t_list	*new;
 	t_list	*lst;
@@ -8,6 +8,7 @@ t_list		*argv_to_lst(char **argv, int argc)
 	int		i;
 
 	i = 1;
+	lst = NULL;
 	res = 0;
 	while (i < argc)
 	{
@@ -37,7 +38,7 @@ void	check_duplicates(t_list *a)
 				printf("Error\n");
 				exit(0);
 			}
-			it = it->next;	
+			it = it->next;
 		}
 		a = a->next;
 		if (a)
@@ -48,9 +49,9 @@ void	check_duplicates(t_list *a)
 
 int	main(int argc, char **argv)
 {
-	t_list	*a;
-	t_list	*b;
-	t_chunks c_struct;
+	t_list		*a;
+	t_list		*b;
+	t_chunks	c_struct;
 
 	if (argc <= 1)
 	{
@@ -59,15 +60,8 @@ int	main(int argc, char **argv)
 	}
 	b = 0;
 	c_struct.divisor = 0;
-	a = argv_to_lst(argv, argc); 
-	// rev_rotate_a(&a);
-	// rotate_a(&a);
+	a = argv_to_lst(argv, argc);
 	check_duplicates(a);
-	algo(&a, &b, &c_struct);
-	// print_lst(a);
-	// while (a != NULL)
-	// {
-	// 	printf("a = %d\n", a->content);
-	// 	a = a->next;
-	// }
+	wich_algo(&a, &b, &c_struct);
+	print_lst(a);
 }

@@ -9,7 +9,6 @@ void	rotate_a(t_list	**a)
 	lst_len = ft_lstsize(*a);
 	if (lst_len <= 1)
 		return ;
-
 	first = (*a);
 	newfirst = (*a)->next;
 	while ((*a)->next)
@@ -23,7 +22,6 @@ void	rotate_b(t_list	**b)
 {
 	rotate_a(b);
 }
-
 
 void	rotate_ab(t_list **a, t_list **b)
 {

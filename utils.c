@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	print_lst(t_list	*lst)
+void	print_lst(t_list *lst)
 {
 	t_list	*newlst;
 
@@ -33,16 +33,10 @@ t_list	*lst_dup(t_list *lst)
 	return (dup);
 }
 
-void	pre_sort(t_list **a)
+void	sorting_lst(t_list **a, t_list *b, int sort, t_list *start)
 {
-	int		tmp;
-	t_list	*b;
-	t_list	*start;
-	int		sort;
+	int	tmp;
 
-	b = *a;
-	sort = 1;
-	start = *a;
 	tmp = (*a)->content;
 	while (sort == 1 && *a != NULL)
 	{
@@ -65,4 +59,16 @@ void	pre_sort(t_list **a)
 		}
 		*a = start;
 	}
+}
+
+void	pre_sort(t_list **a)
+{
+	t_list	*b;
+	t_list	*start;
+	int		sort;
+
+	b = *a;
+	sort = 1;
+	start = *a;
+	sorting_lst(a, b, sort, start);
 }
