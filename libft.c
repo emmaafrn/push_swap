@@ -30,14 +30,15 @@ int	ft_atoi(const char *nptr)
 
 void	ft_lstclear(t_list **lst)
 {
-	t_list	*ok;
+	t_list	*next;
+	t_list	*tmp;
 
-	ok = (*lst);
-	while (ok != NULL)
+	next = *lst;
+	while (next != NULL)
 	{
-		ok = (*lst)->next;
-		free((*lst));
-		(*lst) = ok;
+		tmp = next;
+		next = next->next;
+		free(tmp);
 	}
 	(*lst) = NULL;
 }

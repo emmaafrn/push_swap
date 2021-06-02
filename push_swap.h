@@ -57,4 +57,6 @@ void	push_under_limits(t_list **a, t_list **b,
 void	sort_a(t_list **a, t_list **b);
 int		min_distance(t_list *lst, int min);
 
+int		is_it_sorted(t_list **a);
+
 #endif

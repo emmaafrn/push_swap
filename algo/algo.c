@@ -73,6 +73,11 @@ void	wich_algo(t_list **a, t_list **b, t_chunks *c_struct)
 	else if (size > 5)
 	{
 		limits(a, c_struct);
+		if (c_struct->chunk_limit == NULL)
+		{
+			printf("Error\n");
+			return ;
+		}
 		push_under_limits(a, b, c_struct->chunk_limit, c_struct);
 		sort_a(a, b);
 	}

@@ -61,7 +61,17 @@ int	main(int argc, char **argv)
 	b = 0;
 	c_struct.divisor = 0;
 	a = argv_to_lst(argv, argc);
+	if (a == NULL)
+		return (0);
 	check_duplicates(a);
+	if (is_it_sorted(&a))
+	{
+		ft_lstclear(&a);
+		exit(0);
+	}
 	wich_algo(&a, &b, &c_struct);
-	print_lst(a);
+	// print_lst(a);
+	ft_lstclear(&a);
+	if (c_struct.chunk_limit)
+		free(c_struct.chunk_limit);
 }

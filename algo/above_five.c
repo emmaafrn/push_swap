@@ -41,6 +41,8 @@ int	*find_limits(t_list *temp, int len_a, int *limits, t_chunks *c_struct)
 
 	i = 0;
 	j = 0;
+	if (limits != NULL)
+		free(limits);
 	limits = malloc(c_struct->divisor * sizeof(int));
 	if (limits == 0)
 		return (NULL);
@@ -74,7 +76,7 @@ void	limits(t_list **a, t_chunks *c_struct)
 	temp = lst_dup(*a);
 	pre_sort(&temp);
 	if (len_a >= 500)
-		c_struct->divisor = 10;
+		c_struct->divisor = 11;
 	else if (len_a >= 100)
 		c_struct->divisor = 5;
 	else if (len_a >= 50)
@@ -85,6 +87,7 @@ void	limits(t_list **a, t_chunks *c_struct)
 		c_struct->divisor = 2;
 	c_struct->chunk_limit = find_limits(temp, len_a,
 			c_struct->chunk_limit, c_struct);
+	ft_lstclear(&temp);
 	if (c_struct->chunk_limit == NULL)
 		return ;
 }
@@ -115,4 +118,5 @@ void	push_under_limits(t_list **a, t_list **b,
 		}
 		i++;
 	}
+	ft_lstclear(&dup);
 }

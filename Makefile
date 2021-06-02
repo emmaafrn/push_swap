@@ -1,33 +1,31 @@
-SRCS	=	actions/push.c actions/reverse_rotate.c actions/reverse_rotate.c actions/swap.c \
-			algo/algo.c algo/three_or_less.c algo/above_five.c \
-			libft.c list.c push_swap.c utils.c
+NAME	=	push_swap
 
-OBJS	= ${SRCS:.c=.o}
+SRCS	=	actions/push.c actions/reverse_rotate.c actions/rotate.c actions/swap.c \
+			algo/algo.c algo/three_or_less.c algo/above_five.c algo/sort_a.c algo/three_or_less.c\
+			libft.c list.c main.c utils.c checker.c
 
-NAME	= push_swap
+OBJ = ${SRCS:.c=.o}
 
-CFLAGS	= -Werror -Wall -Wextra
-
-GCC  = gcc
+CC  = gcc
 
 RM  = rm -f
 
-$(NAME): $(OBJS)
-	$(GCC) ${CFLAGS} -o $(NAME)
+CFLAGS = -Wall -Wextra -Werror
 
-$(OBJS) = push_swap.h
-
-all:	$(NAME)
+all:		$(NAME)
 
 %.o: %.c
-	$(GCC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(OBJ)
+	$(CC) ${CFLAGS} $^ -o $(NAME)
+
+$(OBJ) : push_swap.h
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJ)
 
 fclean:	clean
 	$(RM) $(NAME)
 
 re:		fclean all
-
-.PHONY:		all clean fclean re
