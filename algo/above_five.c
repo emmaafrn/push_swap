@@ -98,8 +98,8 @@ void	push_under_limits(t_list **a, t_list **b,
 	t_list	*dup;
 	t_list	*orig;
 
-	i = 0;
-	while (i < c_struct->divisor)
+	i = -1;
+	while (++i < c_struct->divisor)
 	{
 		orig = lst_dup(*a);
 		dup = orig;
@@ -107,17 +107,12 @@ void	push_under_limits(t_list **a, t_list **b,
 		{
 			if (dup->content < limits[i])
 			{
-				while ((*a)->content != dup->content)
-				{
-					rotate_a(a);
-					printf("ra\n");
-				}
+				rev_rotate_or_rotate(a, dup);
 				push_b(a, b);
 				printf("pb\n");
 			}
 			dup = dup->next;
 		}
-		i++;
 		ft_lstclear(&orig);
 	}
 }

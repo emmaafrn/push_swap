@@ -56,6 +56,7 @@ void	push_under_limits(t_list **a, t_list **b,
 			int *limits, t_chunks *c_struct);
 void	sort_a(t_list **a, t_list **b);
 int		min_distance(t_list *lst, int min);
+void	rev_rotate_or_rotate(t_list **a, t_list *lst);
 
 int		is_it_sorted(t_list **a);
 

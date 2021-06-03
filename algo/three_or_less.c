@@ -44,7 +44,7 @@ void	three_numbers(t_list	**a, int size)
 	a_bis = (*a)->content;
 	b = (*a)->next->content;
 	c = (*a)->next->next->content;
-	if ((*a)->content > (*a)->next->content > (*a)->next->next->content)
+	if ((*a)->content < (*a)->next->content < (*a)->next->next->content)
 	{
 		if (size == 3)
 			exit(0);

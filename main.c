@@ -34,10 +34,10 @@ void	check_duplicates(t_list *a)
 		while (it)
 		{
 			if (a->content == it->content)
-			{
-				printf("Error\n");
-				exit(0);
-			}
+            {
+                write(2, "Error\n", 6);
+                exit(0);
+            }
 			it = it->next;
 		}
 		a = a->next;
@@ -54,10 +54,7 @@ int	main(int argc, char **argv)
 	t_chunks	c_struct;
 
 	if (argc <= 1)
-	{
-		write(2, "Error\n", 6);
 		return (0);
-	}
 	b = 0;
 	c_struct.divisor = 0;
 	a = argv_to_lst(argv, argc);
@@ -70,7 +67,6 @@ int	main(int argc, char **argv)
 		exit(0);
 	}
 	wich_algo(&a, &b, &c_struct);
-	// print_lst(a);
 	ft_lstclear(&a);
 	if (c_struct.chunk_limit)
 		free(c_struct.chunk_limit);
