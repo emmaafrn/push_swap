@@ -59,7 +59,6 @@ int	*find_limits(t_list *temp, int len_a, int *limits, t_chunks *c_struct)
 		limits[--j] = temp->content;
 		j++;
 	}
-	ft_lstclear(&temp);
 	return (limits);
 }
 
@@ -97,11 +96,13 @@ void	push_under_limits(t_list **a, t_list **b,
 {
 	int		i;
 	t_list	*dup;
+	t_list	*orig;
 
 	i = 0;
 	while (i < c_struct->divisor)
 	{
-		dup = lst_dup(*a);
+		orig = lst_dup(*a);
+		dup = orig;
 		while (dup)
 		{
 			if (dup->content < limits[i])
@@ -117,6 +118,6 @@ void	push_under_limits(t_list **a, t_list **b,
 			dup = dup->next;
 		}
 		i++;
+		ft_lstclear(&orig);
 	}
-	ft_lstclear(&dup);
 }
